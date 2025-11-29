@@ -36,7 +36,7 @@
   }
 
   .bg-grad-primary, .bg-grad-secondary {
-    color: #000000;
+    /* color: #000000; Removed to allow text-white overrides */
   }
 
   .animate-spin-slow {
