@@ -1,34 +1,7 @@
-import { PrismaClient } from '@prisma/client'
-import { PrismaPg } from '@prisma/adapter-pg'
-import { Pool } from 'pg'
-import { Partner, Texts } from './schemas'
 
-const globalForPrisma = global as unknown as {
-  prisma: PrismaClient
-  pool: Pool
-}
-
-// Create a connection pool
-const pool = globalForPrisma.pool || new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/bde_db',
-})
-
-if (process.env.NODE_ENV !== 'production') {
-  globalForPrisma.pool = pool
-}
-
-// Create the Prisma adapter
-const adapter = new PrismaPg(pool)
-
-// Initialize Prisma Client with the adapter
-export const prisma =
-  globalForPrisma.prisma ||
-  new PrismaClient({
-    adapter,
-    log: ['query'],
-  })
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+import { prisma } from "@/lib/prisma";
+import { Partner, Texts } from './schemas';
+import { FALLBACK_TEXTS } from "./fallback-texts";
 
 export async function getPartners() {
   try {
