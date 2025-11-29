@@ -1,8 +1,8 @@
-import { Hero } from "@/components/Hero";
-import { Section } from "@/components/Section";
-import { Button } from "@/components/Button";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/ui/Hero";
+import { Section } from "@/components/ui/Section";
+import { Button } from "@/components/ui/Button";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { getSettings, getActivePartners } from "@/lib/data";
 
 export const metadata = {

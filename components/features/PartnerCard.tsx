@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Badge } from "./Badge";
-import { Button } from "./Button";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import type { Partner } from "@/lib/schemas";
 import { categoryLabels } from "@/lib/utils";
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "./Badge";
-import { Button } from "./Button";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import type { Event } from "@/lib/schemas";
 import { formatDate, formatTime, formatDateTimeRange } from "@/lib/utils";
 // import { getTexts } from "@/lib/data";

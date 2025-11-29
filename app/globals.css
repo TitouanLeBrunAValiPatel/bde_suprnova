@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --font-chunk-five: Impact, 'Arial Black', sans-serif;
+  }
+
   * {
     @apply border-brand-black;
   }

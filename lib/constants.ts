@@ -1,96 +1,102 @@
+export const SCROLL_OFFSET = 80;
+
 export const DEFAULT_TEXTS = {
     header: {
-        brand: "BDE Sup'RNova",
-        ctaBuyCard: "Acheter la carte",
+        brand: "Sup'RNova",
         nav: {
-            home: "Accueil",
-            events: "Événements",
-            partners: "Partenaires",
-            card: "Carte BDE",
-            team: "L'Équipe",
-            contact: "Contact",
+            home: "🏠 Accueil",
+            events: "🎊 Événements",
+            partners: "🤝 Partenaires",
+            card: "💎 Carte BDE",
+            team: "🌟 L'équipe",
+            contact: "📬 Contact"
         },
+        ctaBuyCard: "🛒 Acheter la carte"
     },
     footer: {
-        schoolLine: "BDE de l'école Sup'De Vinci Rennes",
-        associationTypeBadge: "Association loi 1901",
         navigation: "Navigation",
-        contact: "Contact",
-        social: "Réseaux sociaux",
         nav: {
             home: "Accueil",
             events: "Événements",
             partners: "Partenaires",
-            team: "L'Équipe",
+            team: "Le BDE"
         },
+        contact: "Contact",
+        social: "Réseaux sociaux",
         legal: {
-            copyright: "© {year} {association}. Tous droits réservés.",
             mentions: "Mentions légales",
             privacy: "Politique de confidentialité",
+            copyright: "© {year} {association}. Tous droits réservés."
         },
+        associationTypeBadge: "Association loi 1901",
+        schoolLine: "Bureau des Étudiants de Sup de Vinci Rennes"
     },
     home: {
-        brandAltBde: "Logo BDE Sup'RNova",
-        brandAlt: "Logo Sup'RNova",
-        badgeYearPrefix: "Année",
-        title: "Vivez votre vie étudiante à 100%",
-        subtitle: "Soirées, voyages, sport et bons plans",
-        description: "Rejoignez l'aventure Sup'RNova et profitez d'une année inoubliable avec plus de {partnersCount} partenaires à Rennes.",
-        ctaViewEvents: "Voir les événements",
-        ctaSeeAdvantages: "Voir les avantages",
+        badgeYearPrefix: "⚡ Année",
+        title: "BDE Sup'RNova",
+        subtitle: "Ta vie étudiante à 100% ! 🚀",
+        description: "Soirées de folie 🎉 • {partnersCount}+ partenaires 🤝 • Événements inoubliables 🎊 • Une équipe au top 💪",
+        ctaViewEvents: "🔥 Voir les événements",
+        ctaSeeAdvantages: "💎 Découvrir les avantages",
         scrollDownAria: "Défiler vers le bas",
         presentation: {
-            title: "L'Esprit Sup'RNova",
+            title: "Qui sommes-nous ? 🎓",
             convivialityTitle: "Convivialité",
-            convivialityText: "Des moments de partage et de rencontre pour souder la promo.",
+            convivialityText: "On crée du lien entre tous les étudiants dans une ambiance de fou !",
             eventsTitle: "Événements",
-            eventsText: "Des soirées et des activités toute l'année pour décompresser.",
+            eventsText: "Des soirées, du sport, de la culture... Y'en a pour tous les goûts !",
             engagementTitle: "Engagement",
-            engagementText: "Une équipe dévouée pour vous représenter et vous animer.",
-            intro: "Le BDE Sup'RNova, c'est votre allié pour une vie étudiante riche et dynamique.",
+            engagementText: "Une équipe de passionnés à ton service toute l'année !",
+            intro: "Le BDE Sup'RNova, c'est LE Bureau des Étudiants qui fait vibrer le campus de Sup de Vinci Rennes ! Notre mission ? Rendre ton année étudiante absolument INOUBLIABLE 🚀"
         },
         upcoming: {
-            title: "À venir",
-            subtitle: "Ne manquez pas nos prochains événements !",
+            title: "🎊 Événements à venir",
+            subtitle: "Prêt à faire la fête ? Voici ce qui t'attend ! 🔥"
         },
         past: {
-            title: "C'était le feu 🔥",
-            subtitle: "Retour en images sur nos derniers événements",
-            completed: "Terminé",
-            photos: "Voir les photos",
-            details: "Détails",
-            moreComing: "Et bien plus encore à venir...",
+            title: "📸 Nos derniers événements",
+            subtitle: "Retour en images sur les meilleurs moments ! 🎬",
+            completed: "✓ Terminé",
+            moreComing: "Et ce n'est que le début... Plein d'autres souvenirs à venir ! 🚀",
+            details: "Voir les détails →",
+            photos: "Voir les photos"
         },
         card: {
-            title: "Carte BDE {year}",
-            subtitle: "Rentabilisée en 2 sorties !",
-            description: "Profitez de réductions exclusives chez nos {partnersCount} partenaires : bars, restos, loisirs...",
-            ctaBuy: "Je la veux !",
-            ctaSeePartners: "Voir les partenaires",
-            badges: ["+ de {partnersCount} partenaires", "Remboursée rapidement", "Tarifs préférentiels"],
+            title: "💎 Carte BDE {year}",
+            subtitle: "Ta carte magique pour économiser toute l'année ! 🎁",
+            description: "Plus de {partnersCount} partenaires à Rennes : bars, restos, sport, culture... La carte est rentabilisée dès ta 2ème sortie ! 🚀",
+            ctaBuy: "🛒 Acheter ma carte",
+            ctaSeePartners: "👀 Voir les partenaires",
+            badges: [
+                "💰 Économies garanties",
+                "🎉 Accès prioritaire",
+                "🤝 {partnersCount}+ partenaires"
+            ]
         },
         team: {
-            title: "Votre BDE",
-            meet: "Rencontrez l'équipe",
-            hero: "Mandat {year}",
-            heroSubtitle: "Une équipe motivée pour vous servir",
+            title: "🌟 L'équipe du BDE",
+            hero: "La team Sup'RNova {year} 🚀",
+            heroSubtitle: "Ensemble pour faire vibrer le campus !",
+            meet: "Rencontrez les membres du bureau 👇"
         },
-        teamImageAlt: "Photo de l'équipe du BDE",
         contact: {
-            title: "Nous contacter",
-            subtitle: "Une question ? Une suggestion ? On est là !",
+            title: "📬 On reste en contact !",
+            subtitle: "Une question ? Une idée ? N'hésite pas à nous contacter ! 💬",
             email: "Email",
             instagram: {
                 title: "Instagram",
-                subtitle: "Suivez nos actus",
+                subtitle: "Suis nos actus !"
             },
             discord: {
                 title: "Discord",
-                subtitle: "Rejoignez la commu",
-            },
+                subtitle: "Rejoins la communauté !"
+            }
         },
         accessibility: {
-            menu: "Menu",
+            menu: "Menu"
         },
-    },
+        brandAlt: "Logo Sup'RNova",
+        brandAltBde: "Logo BDE Sup'RNova",
+        teamImageAlt: "L'équipe du BDE Sup'RNova"
+    }
 };

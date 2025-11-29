@@ -1,7 +1,7 @@
-import { Hero } from "@/components/Hero";
-import { Section } from "@/components/Section";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/ui/Hero";
+import { Section } from "@/components/ui/Section";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { getActivePartners } from "@/lib/data";
 import { PartnersClient } from "./PartnersClient";
 

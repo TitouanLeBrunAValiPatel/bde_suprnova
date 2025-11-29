@@ -28,7 +28,6 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${leagueSpartan.variable} ${merriweather.variable}`}
-      style={{ "--font-chunk-five": "Impact, 'Arial Black', sans-serif" } as React.CSSProperties}
     >
       <body>
         <SmoothScroll />

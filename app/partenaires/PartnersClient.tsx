@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Section } from "@/components/Section";
-import { PartnerCard } from "@/components/PartnerCard";
-import { Filters } from "@/components/Filters";
-import { EmptyState } from "@/components/EmptyState";
+import { Section } from "@/components/ui/Section";
+import { PartnerCard } from "@/components/features/PartnerCard";
+import { Filters } from "@/components/features/Filters";
+import { EmptyState } from "@/components/ui/EmptyState";
 import type { Partner } from "@/lib/schemas";
 
 interface PartnersClientProps {

@@ -5,11 +5,11 @@ import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 import { animateScrollToY } from "@/lib/utils";
-import { Container } from "./Container";
-import { Button } from "./Button";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { getTexts } from "@/lib/data";
 
-import { DEFAULT_TEXTS } from "@/lib/constants";
+import { DEFAULT_TEXTS, SCROLL_OFFSET } from "@/lib/constants";
 
 // const texts = getTexts(); // Removed internal fetch
 // Navigation moved inside component to use props
@@ -40,7 +40,7 @@ export function Header({ texts = DEFAULT_TEXTS }: { texts?: any }) {
         } else {
           const element = document.getElementById(scrollTo);
           if (element) {
-            const offset = 80;
+            const offset = SCROLL_OFFSET;
             const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
             const target = elementPosition - offset;
             void animateScrollToY(target, 600);
@@ -53,7 +53,7 @@ export function Header({ texts = DEFAULT_TEXTS }: { texts?: any }) {
       } else {
         const element = document.getElementById(scrollTo);
         if (element) {
-          const offset = 80;
+          const offset = SCROLL_OFFSET;
           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
           const target = elementPosition - offset;
           void animateScrollToY(target, 600);
