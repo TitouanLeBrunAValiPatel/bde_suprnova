@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { getSettings, getTexts } from "@/lib/data";
 import { formatText } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
+import { getImageUrl } from "@/lib/image-url";
 
 export async function Footer() {
   const settings = await getSettings();
@@ -17,7 +18,7 @@ export async function Footer() {
           <div className="">
             <Link href="/" className="block relative w-32 h-32">
               <Image
-                src="/images/assets/Logo couleur (2).png"
+                src={getImageUrl("assets/Logo couleur (2).png")}
                 alt={texts.home.brandAlt}
                 fill
                 className="object-contain"

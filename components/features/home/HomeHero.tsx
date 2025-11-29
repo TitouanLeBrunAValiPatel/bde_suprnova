@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { animateScrollToY, formatText } from "@/lib/utils";
 import { SCROLL_OFFSET } from "@/lib/constants";
+import { getImageUrl } from "@/lib/image-url";
 
 interface HomeHeroProps {
     texts: any;
@@ -38,7 +39,7 @@ export function HomeHero({ texts, settings, partnersCount }: HomeHeroProps) {
                         className="mb-6"
                     >
                         <Image
-                            src="/images/assets/Logo couleur.png"
+                            src={getImageUrl("assets/Logo couleur.png")}
                             alt={texts.home.brandAltBde}
                             width={200}
                             height={200}

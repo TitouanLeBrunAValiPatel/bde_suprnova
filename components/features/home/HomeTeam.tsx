@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { TeamCard } from "@/components/features/TeamCard";
 import { formatText } from "@/lib/utils";
+import { getImageUrl } from "@/lib/image-url";
 
 interface HomeTeamProps {
     texts: any;
@@ -41,7 +42,7 @@ export function HomeTeam({ texts, settings, team }: HomeTeamProps) {
                     <div className="relative rounded-2xl overflow-hidden shadow-xl group">
                         <div className="absolute inset-0 bg-gradient-to-t from-brand-red/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                         <Image
-                            src="/images/team/groupe.jpg"
+                            src={getImageUrl("team/groupe.jpg")}
                             alt={texts.home.teamImageAlt}
                             width={900}
                             height={600}

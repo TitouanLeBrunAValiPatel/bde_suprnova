@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts",
+    "migrate:images": "tsx scripts/migrate-images-to-minio.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.0.1",
@@ -16,6 +17,7 @@
     "@types/pg": "^8.15.6",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.10",
+    "minio": "^8.0.6",
     "next": "^14.2.33",
     "pg": "^8.16.3",
     "react": "^18.3.1",

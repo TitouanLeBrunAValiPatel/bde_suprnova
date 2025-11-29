@@ -11,6 +11,7 @@ import { getTexts } from "@/lib/data";
 
 import { SCROLL_OFFSET } from "@/lib/constants";
 import { Texts } from "@/lib/schemas";
+import { getImageUrl } from "@/lib/image-url";
 
 // Navigation moved inside component to use props
 
@@ -71,7 +72,7 @@ export function Header({ texts }: { texts: Texts }) {
             className="flex items-center space-x-3 group"
           >
             <Image
-              src="/images/assets/Logo simple couleur.png"
+              src={getImageUrl("assets/Logo simple couleur.png")}
               alt={texts.home.brandAlt}
               width={50}
               height={50}
