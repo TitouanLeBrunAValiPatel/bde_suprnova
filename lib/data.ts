@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
 import { Pool } from 'pg'
-import { Partner } from './schemas'
+import { Partner, Texts } from './schemas'
 
 const globalForPrisma = global as unknown as {
   prisma: PrismaClient
@@ -150,8 +150,73 @@ export async function getActivePartners(): Promise<Partner[]> {
   }
 }
 
-import { DEFAULT_TEXTS } from "./constants";
+function unflattenObject(data: { key: string; value: string }[]): any {
+  const result: any = {};
+  for (const item of data) {
+    const keys = item.key.split('.');
+    let current = result;
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      if (i === keys.length - 1) {
+        try {
+          current[key] = JSON.parse(item.value);
+        } catch {
+          current[key] = item.value;
+        }
+      } else {
+        current[key] = current[key] || {};
+        current = current[key];
+      }
+    }
+  }
+  return result;
+}
 
-export async function getTexts() {
-  return DEFAULT_TEXTS;
+function deepMerge(target: any, source: any): any {
+  const output = { ...target };
+  for (const key of Object.keys(source)) {
+    if (source[key] instanceof Object && !Array.isArray(source[key]) && key in target) {
+      output[key] = deepMerge(target[key], source[key]);
+    } else {
+      output[key] = source[key];
+    }
+  }
+  return output;
+}
+
+export async function getTexts(): Promise<Texts> {
+  const { FALLBACK_TEXTS } = await import("./fallback-texts");
+  
+  try {
+    const content = await prisma.siteContent.findMany();
+    
+    if (content.length === 0) {
+      console.warn("No texts found in database, using fallback texts");
+      return FALLBACK_TEXTS;
+    }
+
+    const dbTexts: any = {};
+    
+    // Group by section
+    const bySection: Record<string, { key: string; value: string }[]> = {};
+    for (const item of content) {
+      if (!bySection[item.section]) {
+        bySection[item.section] = [];
+      }
+      bySection[item.section].push({ key: item.key, value: item.value });
+    }
+
+    // Unflatten each section
+    for (const [section, items] of Object.entries(bySection)) {
+      dbTexts[section] = unflattenObject(items);
+    }
+
+    // Merge database texts with fallback to ensure all keys exist
+    const mergedTexts = deepMerge(FALLBACK_TEXTS, dbTexts);
+    return mergedTexts as Texts;
+    
+  } catch (error) {
+    console.error("Failed to fetch texts from DB, using fallback:", error);
+    return FALLBACK_TEXTS;
+  }
 }

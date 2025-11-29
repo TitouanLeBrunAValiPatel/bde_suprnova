@@ -53,7 +53,7 @@ export function HomeHero({ texts, settings, partnersCount }: HomeHeroProps) {
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         <Badge variant="yellow" className="text-base px-6 py-2 mb-6 text-brand-black font-bold">
-                            ⚡ {texts.home.badgeYearPrefix} {settings.year} ⚡
+                            {texts.home.badgeYearPrefix} {settings.year} ⚡
                         </Badge>
                     </motion.div>
 
