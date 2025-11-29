@@ -3,11 +3,14 @@ import { Button } from "@/components/ui/Button";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
+import { getTexts } from "@/lib/data";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const texts = await getTexts();
+  
   return (
     <>
-      <Header />
+      <Header texts={texts} />
       <main>
         <Container>
           <div className="min-h-[60vh] flex flex-col items-center justify-center text-center py-20">

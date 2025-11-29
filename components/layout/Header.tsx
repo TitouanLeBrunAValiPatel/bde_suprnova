@@ -9,12 +9,12 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { getTexts } from "@/lib/data";
 
-import { DEFAULT_TEXTS, SCROLL_OFFSET } from "@/lib/constants";
+import { SCROLL_OFFSET } from "@/lib/constants";
+import { Texts } from "@/lib/schemas";
 
-// const texts = getTexts(); // Removed internal fetch
 // Navigation moved inside component to use props
 
-export function Header({ texts = DEFAULT_TEXTS }: { texts?: any }) {
+export function Header({ texts }: { texts: Texts }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();

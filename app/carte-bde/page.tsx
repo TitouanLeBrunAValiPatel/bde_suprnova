@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { getSettings, getActivePartners } from "@/lib/data";
+import { getSettings, getActivePartners, getTexts } from "@/lib/data";
 
 export const metadata = {
   title: "Carte BDE | BDE Sup'RNova",
@@ -13,11 +13,12 @@ export const metadata = {
 
 export default async function CardBDEPage() {
   const settings = await getSettings();
+  const texts = await getTexts();
   const partnersCount = (await getActivePartners()).length;
 
   return (
     <>
-      <Header />
+      <Header texts={texts} />
       <main>
         <Hero
           title={`Carte BDE ${settings.year}`}

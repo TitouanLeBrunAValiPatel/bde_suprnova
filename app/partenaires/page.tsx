@@ -2,7 +2,7 @@ import { Hero } from "@/components/ui/Hero";
 import { Section } from "@/components/ui/Section";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { getActivePartners } from "@/lib/data";
+import { getActivePartners, getTexts } from "@/lib/data";
 import { PartnersClient } from "./PartnersClient";
 
 export const metadata = {
@@ -13,12 +13,13 @@ export const metadata = {
 
 export default async function PartnersPage() {
   const allPartners = await getActivePartners();
+  const texts = await getTexts();
   const categories = Array.from(new Set(allPartners.map((p) => p.category)));
   const cities = Array.from(new Set(allPartners.map((p) => p.city))).sort();
 
   return (
     <>
-      <Header />
+      <Header texts={texts} />
       <main>
         <Hero
           title="Nos Partenaires"
