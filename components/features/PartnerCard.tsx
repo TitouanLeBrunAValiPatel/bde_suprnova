@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import type { Partner } from "@/lib/schemas";
 import { categoryLabels } from "@/lib/utils";
+import { getImageUrl } from "@/lib/image-url";
 
 interface PartnerCardProps {
   partner: Partner;
@@ -18,15 +19,19 @@ export function PartnerCard({ partner }: PartnerCardProps) {
           </h3>
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <span>{partner.city}</span>
-            <span>•</span>
-            <span>{categoryLabels[partner.category] || partner.category}</span>
+            {partner.category && (
+              <>
+                <span>•</span>
+                <span>{categoryLabels[partner.category] || partner.category}</span>
+              </>
+            )}
           </div>
         </div>
         {partner.logo && (
-          <div className="relative w-16 h-16 ml-4 flex-shrink-0">
+          <div className="relative w-16 h-16 flex-shrink-0 ml-4">
             <Image
-              src={partner.logo}
-              alt={`Logo ${partner.name}`}
+              src={getImageUrl(partner.logo)}
+              alt={partner.name}
               fill
               className="object-contain"
             />
@@ -79,4 +84,3 @@ export function PartnerCard({ partner }: PartnerCardProps) {
     </div>
   );
 }
-

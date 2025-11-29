@@ -80,7 +80,7 @@ function LoginButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="w-full flex justify-center" aria-disabled={pending}>
+    <Button type="submit" className="w-full flex justify-center" aria-disabled={pending}>
       {pending ? "Connexion..." : "Se connecter"}
     </Button>
   );

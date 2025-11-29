@@ -1,10 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import type { Event } from "@/lib/schemas";
-import { formatDate, formatTime, formatDateTimeRange } from "@/lib/utils";
-// import { getTexts } from "@/lib/data";
+import { formatDate, formatTime } from "@/lib/utils";
+import { getImageUrl } from "@/lib/image-url";
 
 interface EventCardProps {
   event: Event;
@@ -15,7 +14,6 @@ interface EventCardProps {
 export function EventCard({ event, compact = false, texts }: EventCardProps) {
   const eventDate = new Date(event.date);
   const isPast = eventDate < new Date();
-  // const texts = getTexts(); // Removed internal fetch
 
   return (
     <div
@@ -24,7 +22,7 @@ export function EventCard({ event, compact = false, texts }: EventCardProps) {
     >
       {event.cover && (
         <div className="relative w-full h-48">
-          <Image src={event.cover} alt={event.title} fill className="object-cover" />
+          <Image src={getImageUrl(event.cover)} alt={event.title} fill className="object-cover" />
           {isPast && (
             <div className="absolute top-2 right-2">
               <Badge variant="default">Terminé</Badge>
@@ -100,4 +98,3 @@ export function EventCard({ event, compact = false, texts }: EventCardProps) {
     </div>
   );
 }
-

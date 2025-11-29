@@ -69,12 +69,19 @@ export function PartnerForm({ initialData }: PartnerFormProps) {
     }
 
     try {
+      let result;
       if (initialData) {
-        await updatePartner(initialData.id, formData);
+        result = await updatePartner(initialData.id, formData);
       } else {
-        await createPartner(formData);
+        result = await createPartner(formData);
+      }
+
+      if (result?.error) {
+        setError(result.error);
+        setLoading(false);
       }
     } catch (e) {
+      console.error(e);
       setError("Une erreur est survenue.");
       setLoading(false);
     }

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { EventCard } from "@/components/features/EventCard";
 import { Button } from "@/components/ui/Button";
+import { getImageUrl } from "@/lib/image-url";
 
 interface HomeEventsProps {
     upcomingEvents: any[];
@@ -77,7 +78,6 @@ export function HomeEvents({ upcomingEvents, pastEvents, texts }: HomeEventsProp
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     viewport={{ once: true }}
-                                    whileHover={{ scale: 1.03 }}
                                     className="relative group"
                                 >
                                     <div className="relative overflow-hidden rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl transition-all">
@@ -85,7 +85,7 @@ export function HomeEvents({ upcomingEvents, pastEvents, texts }: HomeEventsProp
                                             <div className="relative w-full h-64 overflow-hidden">
                                                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all z-10"></div>
                                                 <Image
-                                                    src={event.cover}
+                                                    src={getImageUrl(event.cover)}
                                                     alt={event.title}
                                                     fill
                                                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"

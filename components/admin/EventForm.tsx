@@ -62,13 +62,20 @@ export function EventForm({ initialData }: EventFormProps) {
     }
 
     try {
+      let result;
       if (initialData) {
-        await updateEvent(initialData.slug, formData);
+        result = await updateEvent(initialData.slug, formData);
       } else {
-        await createEvent(formData);
+        result = await createEvent(formData);
       }
-      // Redirect is handled in server action
+
+      if (result?.error) {
+        setError(result.error);
+        setLoading(false);
+      }
+      // If no error, the server action will trigger a redirect
     } catch (e) {
+      console.error(e);
       setError("Une erreur est survenue.");
       setLoading(false);
     }

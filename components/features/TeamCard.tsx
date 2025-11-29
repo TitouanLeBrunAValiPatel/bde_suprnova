@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { TeamMember } from "@/lib/schemas";
+import { getImageUrl } from "@/lib/image-url";
 
 interface TeamCardProps {
   member: TeamMember;
@@ -25,7 +26,7 @@ export function TeamCard({ member }: TeamCardProps) {
       <div className="relative w-32 h-32 mx-auto mb-4">
         {member.photo ? (
           <Image
-            src={member.photo}
+            src={getImageUrl(member.photo)}
             alt={member.name}
             fill
             className={`object-cover rounded-full ${positionClass}`}
