@@ -6,9 +6,12 @@ const connectionString = process.env.DATABASE_URL || "postgresql://postgres:post
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
-const pool = new Pool({ connectionString });
-const adapter = new PrismaPg(pool);
+if (!globalForPrisma.prisma) {
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaPg(pool);
+  globalForPrisma.prisma = new PrismaClient({ adapter });
+}
 
-export const prisma = globalForPrisma.prisma || new PrismaClient({ adapter });
+export const prisma = globalForPrisma.prisma;
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
