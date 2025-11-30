@@ -100,8 +100,8 @@ async function main() {
         {
             "slug": "soiree-integration-2025",
             "title": "Soirée d'intégration 2025",
-            "date": "2025-10-09T20:30:00+02:00",
-            "endDate": "2025-10-10T01:00:00+02:00",
+            "date": "2026-10-09T20:30:00+02:00",
+            "endDate": "2026-10-10T01:00:00+02:00",
             "place": "Rue Saint-Michel, 35000 Rennes | MrZinc",
             "cover": "/images/events/soiree-inte.jpg",
             "tags": ["soirée", "campus", "intégration"],
@@ -112,8 +112,8 @@ async function main() {
         {
             "slug": "futsal-orga-2025",
             "title": "Futsal UrbanSoccer avec l'École & le BDE",
-            "date": "2025-10-23T18:00:00+02:00",
-            "endDate": "2025-10-23T19:00:00+02:00",
+            "date": "2026-10-23T18:00:00+02:00",
+            "endDate": "2026-10-23T19:00:00+02:00",
             "place": "UrbanSoccer Rennes Vern, Le Bois de Soeuvres, Rue de Chantepie, 35770 Vern-sur-Seiche",
             "cover": "/images/events/terrain-indoor-de-foot.jpg",
             "tags": ["sport", "futsal", "école", "BDE"],

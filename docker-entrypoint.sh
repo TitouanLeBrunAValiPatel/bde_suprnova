@@ -18,6 +18,8 @@ npx prisma db push --accept-data-loss
 # Seed the database
 echo "Seeding database..."
 npm run seed
+echo "Seeding admin user..."
+npm run seed:admin
 
 # Start the application
 echo "Starting Next.js application..."
