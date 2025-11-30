@@ -1,0 +1,59 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: ["develop"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Verify Docker Build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: bdesite:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy to VPS
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Aller dans le dossier du projet
+            cd ${{ secrets.PROJECT_PATH }}
+
+            # Récupérer le dernier code
+            git pull origin develop
+
+            # Reconstruire et relancer les conteneurs
+            # On utilise -f docker-compose.yml au cas où, mais c'est le défaut
+            docker compose down
+            docker compose up -d --build
+
+            # Attendre que la base de données soit prête (optionnel mais recommandé)
+            sleep 10
+
+            # Exécuter les migrations Prisma dans le conteneur 'app'
+            docker compose exec -T app npx prisma migrate deploy
+
+            # Nettoyer les images inutilisées
+            docker system prune -f
