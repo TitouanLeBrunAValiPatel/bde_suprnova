@@ -14,6 +14,7 @@ interface PartnersClientProps {
 }
 
 export function PartnersClient({ partners, categories, cities }: PartnersClientProps) {
+  console.log(`[PartnersClient] Received ${partners.length} partners`, partners);
   const [filters, setFilters] = useState({ category: "", city: "" });
 
   const filteredPartners = useMemo(() => {
@@ -56,4 +57,3 @@ export function PartnersClient({ partners, categories, cities }: PartnersClientP
     </Section>
   );
 }
-

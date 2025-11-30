@@ -1,6 +1,7 @@
 import { getEvents, getPartners } from "@/lib/data";
 import { StatsCard } from "@/components/admin/StatsCard";
 import { Calendar, Users, Eye, TrendingUp } from "lucide-react";
+import { formatDate } from "@/lib/format-date";
 
 export default async function AdminDashboard() {
   const events = await getEvents();
@@ -64,7 +65,7 @@ export default async function AdminDashboard() {
               <div key={event.slug} className="flex items-center justify-between p-4 hover:bg-gray-50 rounded-xl transition-colors border border-gray-100 group">
                 <div>
                   <p className="font-bold text-gray-900 font-spartan group-hover:text-brand-red transition-colors">{event.title}</p>
-                  <p className="text-xs text-gray-500 font-medium">{new Date(event.date).toLocaleDateString('fr-FR')}</p>
+                  <p className="text-xs text-gray-500 font-medium">{formatDate(event.date)}</p>
                 </div>
                 <span className={`px-3 py-1 rounded-full text-xs font-bold ${event.published ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
                   {event.published ? 'Publié' : 'Brouillon'}

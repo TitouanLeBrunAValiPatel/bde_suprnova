@@ -5,9 +5,11 @@ import { FALLBACK_TEXTS } from "./fallback-texts";
 
 export async function getPartners() {
   try {
-    return await prisma.partner.findMany({
-      where: { active: true },
+    const partners = await prisma.partner.findMany({
+      // Return all partners for admin
     })
+    console.log(`[getPartners] Fetched ${partners.length} partners`);
+    return partners;
   } catch (error) {
     console.error("Failed to fetch partners:", error);
     return [];
@@ -16,10 +18,12 @@ export async function getPartners() {
 
 export async function getEvents() {
   try {
-    return await prisma.event.findMany({
-      where: { published: true },
+    const events = await prisma.event.findMany({
+      // Return all events for admin
       orderBy: { date: 'asc' },
     })
+    console.log(`[getEvents] Fetched ${events.length} events`);
+    return events;
   } catch (error) {
     console.error("Failed to fetch events:", error);
     return [];
@@ -113,12 +117,14 @@ export async function getPastEvents() {
 
 export async function getActivePartners(): Promise<Partner[]> {
   try {
+    console.log("[getActivePartners] Querying database for active partners...");
     const partners = await prisma.partner.findMany({
       where: { active: true },
     })
+    console.log(`[getActivePartners] Found ${partners.length} active partners`);
     return partners as Partner[]
   } catch (error) {
-    console.error("Failed to fetch active partners:", error);
+    console.error("[getActivePartners] Failed to fetch active partners:", error);
     return [];
   }
 }

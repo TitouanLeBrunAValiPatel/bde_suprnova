@@ -13,7 +13,6 @@ export default function AdminLayout({
 }) {
   return (
     <div className="flex h-screen bg-gray-50">
-      <Toaster position="top-right" richColors />
       
       {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-gray-200 flex flex-col fixed inset-y-0 z-50">
@@ -70,7 +69,7 @@ export default function AdminLayout({
               await signOut();
             }}
           >
-            <Button variant="outline" className="w-full justify-start text-gray-600 hover:text-brand-red hover:bg-brand-red/5 border-gray-200 hover:border-brand-red/20">
+            <Button type="submit" variant="outline" className="w-full justify-start text-gray-600 hover:text-brand-red hover:bg-brand-red/5 border-gray-200 hover:border-brand-red/20">
               <LogOut className="w-4 h-4 mr-2" />
               Déconnexion
             </Button>

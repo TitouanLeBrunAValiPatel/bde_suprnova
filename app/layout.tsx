@@ -19,6 +19,8 @@ const merriweather = Merriweather({
 
 export const metadata: Metadata = defaultMetadata;
 
+import { Toaster } from "sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,8 +30,10 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${leagueSpartan.variable} ${merriweather.variable}`}
+      suppressHydrationWarning
     >
       <body>
+        <Toaster position="top-right" richColors />
         <SmoothScroll />
         {children}
       </body>

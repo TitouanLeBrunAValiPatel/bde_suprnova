@@ -7,6 +7,7 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import { DeleteButton } from "@/components/admin/DeleteButton";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/image-url";
+import { formatDate } from "@/lib/format-date";
 
 export default async function AdminEventsPage() {
   const events = await getEvents();
@@ -64,7 +65,7 @@ export default async function AdminEventsPage() {
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 text-gray-700">
                         <Calendar className="w-4 h-4 text-gray-400" />
-                        <span>{new Date(event.date).toLocaleDateString("fr-FR")}</span>
+                        <span>{formatDate(event.date)}</span>
                       </div>
                       <div className="flex items-center gap-2 text-gray-500 text-xs">
                         <MapPin className="w-3 h-3" />

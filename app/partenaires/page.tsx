@@ -12,7 +12,9 @@ export const metadata = {
 };
 
 export default async function PartnersPage() {
+  console.log("[PartnersPage] Fetching active partners...");
   const allPartners = await getActivePartners();
+  console.log(`[PartnersPage] Fetched ${allPartners.length} partners`);
   const texts = await getTexts();
   const categories = Array.from(new Set(allPartners.map((p) => p.category)));
   const cities = Array.from(new Set(allPartners.map((p) => p.city))).sort();
