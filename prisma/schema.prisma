@@ -27,7 +27,7 @@ model Event {
   date        DateTime
   endDate     DateTime?
   place       String
-  cover       String
+  cover       String?
   tags        String[]
   description String
   ticketUrl   String?

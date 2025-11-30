@@ -36,7 +36,7 @@ export async function createEvent(formData: FormData) {
     date: formData.get("date"),
     place: formData.get("place"),
     description: formData.get("description"),
-    ticketUrl: formData.get("ticketUrl"),
+    ticketUrl: formData.get("ticketUrl") || "",
     published: formData.get("published"),
   });
 
@@ -47,12 +47,14 @@ export async function createEvent(formData: FormData) {
   const { title, slug, date, place, description, ticketUrl, published } = validatedFields.data;
   
   const coverFile = formData.get("cover") as File;
-  if (!coverFile || coverFile.size === 0) {
-    return { error: "L'image de couverture est requise" };
+  let coverPath = undefined;
+
+  if (coverFile && coverFile.size > 0) {
+    coverPath = await uploadImage(coverFile, "events");
   }
 
   try {
-    const coverPath = await uploadImage(coverFile, "events");
+
 
     await prisma.event.create({
       data: {
@@ -63,7 +65,7 @@ export async function createEvent(formData: FormData) {
         description,
         ticketUrl: ticketUrl || null,
         published: published === "on",
-        cover: coverPath,
+        cover: coverPath || null,
       },
     });
   } catch (error) {
@@ -83,7 +85,7 @@ export async function updateEvent(slug: string, formData: FormData) {
     date: formData.get("date"),
     place: formData.get("place"),
     description: formData.get("description"),
-    ticketUrl: formData.get("ticketUrl"),
+    ticketUrl: formData.get("ticketUrl") || "",
     published: formData.get("published"),
   });
 

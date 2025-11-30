@@ -35,11 +35,11 @@ export async function createPartner(formData: FormData) {
     name: formData.get("name"),
     category: formData.get("category"),
     city: formData.get("city"),
-    website: formData.get("website"),
-    address: formData.get("address"),
-    conditions: formData.get("conditions"),
+    website: formData.get("website") || "",
+    address: formData.get("address") || "",
+    conditions: formData.get("conditions") || "",
     active: formData.get("active"),
-    advantages: formData.get("advantages"),
+    advantages: formData.get("advantages") || "",
   });
 
   if (!validatedFields.success) {
@@ -88,11 +88,11 @@ export async function updatePartner(id: string, formData: FormData) {
     name: formData.get("name"),
     category: formData.get("category"),
     city: formData.get("city"),
-    website: formData.get("website"),
-    address: formData.get("address"),
-    conditions: formData.get("conditions"),
+    website: formData.get("website") || "",
+    address: formData.get("address") || "",
+    conditions: formData.get("conditions") || "",
     active: formData.get("active"),
-    advantages: formData.get("advantages"),
+    advantages: formData.get("advantages") || "",
   });
 
   if (!validatedFields.success) {

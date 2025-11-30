@@ -104,10 +104,14 @@ export function PartnerForm({ initialData }: PartnerFormProps) {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Nom <span className="text-red-500">*</span>
+                </label>
                 <input
                   {...form.register("name")}
-                  className="w-full rounded-lg border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red sm:text-sm p-2.5 border"
+                  className={`w-full rounded-lg border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red sm:text-sm p-2.5 border ${
+                    form.formState.errors.name ? "border-red-500" : ""
+                  }`}
                   placeholder="Nom du partenaire"
                 />
                 {form.formState.errors.name && (
@@ -116,10 +120,14 @@ export function PartnerForm({ initialData }: PartnerFormProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Catégorie <span className="text-red-500">*</span>
+                </label>
                 <input
                   {...form.register("category")}
-                  className="w-full rounded-lg border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red sm:text-sm p-2.5 border"
+                  className={`w-full rounded-lg border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red sm:text-sm p-2.5 border ${
+                    form.formState.errors.category ? "border-red-500" : ""
+                  }`}
                   placeholder="ex: Restauration"
                 />
                 {form.formState.errors.category && (
@@ -128,12 +136,16 @@ export function PartnerForm({ initialData }: PartnerFormProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Ville</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Ville <span className="text-red-500">*</span>
+                </label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
                   <input
                     {...form.register("city")}
-                    className="w-full pl-10 rounded-lg border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red sm:text-sm p-2.5 border"
+                    className={`w-full pl-10 rounded-lg border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red sm:text-sm p-2.5 border ${
+                      form.formState.errors.city ? "border-red-500" : ""
+                    }`}
                     placeholder="Rennes"
                   />
                 </div>
@@ -157,7 +169,9 @@ export function PartnerForm({ initialData }: PartnerFormProps) {
                   <Globe className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
                   <input
                     {...form.register("website")}
-                    className="w-full pl-10 rounded-lg border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red sm:text-sm p-2.5 border"
+                    className={`w-full pl-10 rounded-lg border-gray-300 shadow-sm focus:border-brand-red focus:ring-brand-red sm:text-sm p-2.5 border ${
+                      form.formState.errors.website ? "border-red-500" : ""
+                    }`}
                     placeholder="https://..."
                   />
                 </div>
