@@ -29,7 +29,8 @@ jobs:
     name: Deploy to VPS
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch'|| 
+      contains(github.event.head_commit.message, '[deploy]')
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
