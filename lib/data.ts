@@ -1,9 +1,11 @@
 
 import { prisma } from "@/lib/prisma";
+import { unstable_noStore as noStore } from "next/cache";
 import { Partner, Texts } from './schemas';
 import { FALLBACK_TEXTS } from "./fallback-texts";
 
 export async function getPartners() {
+  noStore();
   try {
     const partners = await prisma.partner.findMany({
       // Return all partners for admin
@@ -17,6 +19,7 @@ export async function getPartners() {
 }
 
 export async function getEvents() {
+  noStore();
   try {
     const events = await prisma.event.findMany({
       // Return all events for admin
@@ -31,6 +34,7 @@ export async function getEvents() {
 }
 
 export async function getEventBySlug(slug: string) {
+  noStore();
   try {
     return await prisma.event.findUnique({
       where: { slug },
@@ -42,6 +46,7 @@ export async function getEventBySlug(slug: string) {
 }
 
 export async function getTeamMembers() {
+  noStore();
   try {
     return await prisma.teamMember.findMany({
       orderBy: { createdAt: 'asc' }, // Or any other order preference
@@ -53,6 +58,7 @@ export async function getTeamMembers() {
 }
 
 export async function getSettings() {
+  noStore();
   try {
     const settings = await prisma.settings.findUnique({
       where: { id: 1 },
@@ -81,6 +87,7 @@ export async function getSettings() {
 }
 
 export async function getUpcomingEvents(limit?: number) {
+  noStore();
   try {
     return await prisma.event.findMany({
       where: {
@@ -99,6 +106,7 @@ export async function getUpcomingEvents(limit?: number) {
 }
 
 export async function getPastEvents() {
+  noStore();
   try {
     return await prisma.event.findMany({
       where: {
@@ -116,6 +124,7 @@ export async function getPastEvents() {
 }
 
 export async function getActivePartners(): Promise<Partner[]> {
+  noStore();
   try {
     console.log("[getActivePartners] Querying database for active partners...");
     const partners = await prisma.partner.findMany({

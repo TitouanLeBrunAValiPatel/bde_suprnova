@@ -1,9 +1,34 @@
 import { Client } from 'minio';
 
+const computeConfig = () => {
+  const endpointStr = process.env.MINIO_ENDPOINT || 'localhost';
+  
+  // If it's just a hostname like 'minio' or 'localhost'
+  if (!endpointStr.includes('://') && !endpointStr.includes(':')) {
+    return { endPoint: endpointStr, port: 9000, useSSL: false };
+  }
+
+  // If it has a protocol or port, parse it as a URL
+  try {
+    const urlStr = endpointStr.startsWith('http') ? endpointStr : `http://${endpointStr}`;
+    const url = new URL(urlStr);
+    return {
+      endPoint: url.hostname,
+      port: url.port ? parseInt(url.port) : 9000,
+      useSSL: url.protocol === 'https:',
+    };
+  } catch (e) {
+    console.warn('Failed to parse MINIO_ENDPOINT, falling back to defaults:', e);
+    return { endPoint: 'localhost', port: 9000, useSSL: false };
+  }
+};
+
+const config = computeConfig();
+
 const minioClient = new Client({
-  endPoint: process.env.MINIO_ENDPOINT?.replace(/^https?:\/\//, '') || 'localhost',
-  port: 9000,
-  useSSL: false, // Set to true in production with HTTPS
+  endPoint: config.endPoint,
+  port: config.port,
+  useSSL: config.useSSL,
   accessKey: process.env.MINIO_ROOT_USER || 'minioadmin',
   secretKey: process.env.MINIO_ROOT_PASSWORD || 'minioadmin',
 });

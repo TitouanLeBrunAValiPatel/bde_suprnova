@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { getActivePartners, getTexts } from "@/lib/data";
 import { PartnersClient } from "./PartnersClient";
 
+
 export const metadata = {
   title: "Partenaires | BDE Sup'RNova",
   description:
